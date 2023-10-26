@@ -3,5 +3,4 @@
 # ng with the HTTP status code from the Apache log file
 
 file="apache-access.log"
-
-awk -f' ' '{print $1, $9}' $file
+awk -F' ' '{ print $1, $9}' $file

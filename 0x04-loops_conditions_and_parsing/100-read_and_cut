@@ -10,7 +10,7 @@
 
 file="/etc/passwd"
 
-while IFS= read -r l
+while IFS= read -r list
 do
-	echo "$l" | cut -d ":" -f1,3,6
+	echo "$list" | cut -d ":" -f1,3,6
 done < "$file"

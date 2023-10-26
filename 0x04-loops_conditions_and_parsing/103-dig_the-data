@@ -4,4 +4,4 @@
 
 file="apache-access.log"
 
-awk -f' ' '{print $1, $9}' $file | sort | uniq -c | sort -rn
+awk -F' ' '{ print $1, $9}' $file | sort | uniq -c|sort -rn
