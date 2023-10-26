@@ -6,7 +6,7 @@
 
 lists=$(ls)
 
-for i in lists
+for i in $lists
 do
 	echo "$i" | cut -d '-' -f2
 done
