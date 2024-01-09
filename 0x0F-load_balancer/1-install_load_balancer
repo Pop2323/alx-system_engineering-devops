@@ -17,8 +17,8 @@ backend servers
     mode http
     balance roundrobin
     option http-server-close
-    server 418619-web-01 IP_ADDRESS_WEB_01:80 check
-    server 418619-web-02 IP_ADDRESS_WEB_02:80 check
+    server 418619-web-01 54.227.201.4:80 check
+    server 418619-web-02 34.207.121.32:80 check
 EOF
 
 # Enable HAProxy to be started by init script
