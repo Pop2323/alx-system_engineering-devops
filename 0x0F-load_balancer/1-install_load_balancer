@@ -6,12 +6,8 @@ sudo apt-get update
 # Install HAProxy
 sudo apt-get install -y haproxy
 
-sudo apt-get -y update
-apt-get -y install haproxy
-
-# edit config file
-server_config=\
-"
+# Edit config file
+sudo tee /etc/haproxy/haproxy.cfg <<EOF
 frontend web
     bind *:80
     mode http
@@ -21,13 +17,12 @@ backend servers
     mode http
     balance roundrobin
     option http-server-close
-    server 418619-web-01 54.227.201.4:80 check
-    server 418619-web-02 34.207.121.32:80 check
-"
-echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+    server 418619-web-01 IP_ADDRESS_WEB_01:80 check
+    server 418619-web-02 IP_ADDRESS_WEB_02:80 check
+EOF
 
-# enable haproxy to be started by init script
-
+# Enable HAProxy to be started by init script
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
 
+# Restart HAProxy
 sudo service haproxy restart
