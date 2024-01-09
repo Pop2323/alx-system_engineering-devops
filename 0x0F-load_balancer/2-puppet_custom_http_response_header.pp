@@ -9,6 +9,6 @@ exec {'update':
   match => 'http {',
   line  => "http {\n\tadd_header X-Served-By \"${hostname}\";",
 }
--> exec { 'restart service':
+-> exec {'run':
   command => '/usr/sbin/service nginx restart',
 }
