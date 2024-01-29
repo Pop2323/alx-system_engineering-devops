@@ -1,1 +1,1 @@
-This is gather-data-from-API
+This is gather data from API
