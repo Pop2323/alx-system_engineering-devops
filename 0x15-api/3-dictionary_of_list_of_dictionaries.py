@@ -11,15 +11,15 @@ if __name__ == "__main__":
     jsonplaceholder = 'https://jsonplaceholder.typicode.com/users'
     response = requests.get(jsonplaceholder)
     employees = response.json()
-    print(employees)
 
     data_dict = {}
 
     for employee in employees:
         USER_ID = employee.get('id')
         username = employee.get('username')
-        url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
+        jsonplaceholder = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
                 USER_ID)
+        jsonplaceholder = jsonplaceholder + '/todos/'
         response = requests.get(url)
         tasks = response.json()
         data_dict[USER_ID] = []
@@ -29,6 +29,5 @@ if __name__ == "__main__":
                 "completed": task.get("completed"),
                 "username": username
             })
-
     with open('todo_all_employees.json', 'w') as f:
         json.dump(data_dict, f)
