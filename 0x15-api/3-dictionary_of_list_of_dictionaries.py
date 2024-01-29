@@ -25,9 +25,9 @@ if __name__ == "__main__":
         data_dict[USER_ID] = []
         for task in tasks:
             data_dict[USER_ID].append({
-                "username": username,
                 "task": task.get("title"),
                 "completed": task.get("completed"),
+                "username": username
             })
 
     with open('todo_all_employees.json', 'w') as f:
