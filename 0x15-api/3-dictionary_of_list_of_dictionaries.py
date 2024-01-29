@@ -18,8 +18,7 @@ if __name__ == "__main__":
     for employee in employees:
         USER_ID = employee.get('id')
         username = employee.get('username')
-        url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-                USER_ID)
+        url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(USER_ID)
         response = requests.get(url)
         tasks = response.json()
         data_dict[USER_ID] = []
@@ -29,5 +28,6 @@ if __name__ == "__main__":
                 "task": task.get("title"),
                 "completed": task.get("completed"),
             })
-            with open('todo_all_employees.json', 'w') as f:
-                json.dump(data_dict, f)
+
+    with open('todo_all_employees.json', 'w') as f:
+        json.dump(data_dict, f)
