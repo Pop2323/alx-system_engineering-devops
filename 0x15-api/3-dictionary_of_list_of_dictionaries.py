@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-# Using what you did in the task #0, extend your Python
-# script to export data in the JSON format.
+"""Using what you did in the task #0, extend your Python
+script to export data in the JSON format."""
 
 import json
 import requests
 import sys
+
 
 if __name__ == "__main__":
     jsonplaceholder = 'https://jsonplaceholder.typicode.com/users'
@@ -28,7 +29,5 @@ if __name__ == "__main__":
                 "task": task.get("title"),
                 "completed": task.get("completed"),
             })
-
-    # Write the tasks data to a JSON file
-    with open('todo_all_employees.json', 'w') as f:
-        json.dump(data_dict, f)
+            with open('todo_all_employees.json', 'w') as f:
+                json.dump(data_dict, f)
