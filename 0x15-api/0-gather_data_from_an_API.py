@@ -1,31 +1,31 @@
 #!/usr/bin/python3
-"""Write a Python script that, using this REST API, for a given
-employee ID, returns information about his/her Todo list progress."""
+"""Accessing a REST API for todo lists of employees"""
 
 import requests
 import sys
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        sys.exit(1)
 
-    employee_ID = sys.argv[1]
-    jsonplaceholder = 'https://jsonplaceholder.typicode.com/users'
-    url = f'{jsonplaceholder}/{employee_ID}'
+if __name__ == '__main__':
+    employee_Id = sys.argv[1]
+    baseUrl = "https://jsonplaceholder.typicode.com/users"
+    url = baseUrl + "/" + employee_Id
 
     response = requests.get(url)
+    employee_name = response.json().get('name')
 
-    if response.status_code == 200:
-        employee_name = response.json().get('name')
-        Todourl = f'{url}/todos'
-        res = requests.get(Todourl)
-        tasks = res.json()
+    todoUrl = url + "/todos"
+    response = requests.get(todoUrl)
+    tasks = response.json()
+    start = 0
+    done_tasks = []
 
-        done_tasks = [task for task in tasks if task.get('completed')]
+    for task in tasks:
+        if task.get('completed'):
+            done_tasks.append(task)
+            start += 1
 
-        print("Employee {} is done with tasks({}/{}):".format(
-            employee_name, len(done_tasks), len(tasks)))
-        for task in done_tasks:
-            print("\t{}".format(task.get('title')))
-    else:
-        print(f"Error: Status code: {response.status_code}")
+    print("Employee {} is done with tasks({}/{}):"
+          .format(employee_name, start, len(tasks)))
+
+    for task in done_tasks:
+        print("\t {}".format(task.get('title')))
