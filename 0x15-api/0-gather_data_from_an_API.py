@@ -7,7 +7,6 @@ import sys
 
 
 if __name__ == "__main__":
-    # Check if the script is provided with an employee ID as a command-line argument
     if len(sys.argv) != 2:
         sys.exit(1)
 
@@ -29,9 +28,10 @@ if __name__ == "__main__":
         done_tasks = [task for task in tasks if task.get('completed')]
 
         # Display the employee TODO list progress
-        print("Employee {} is done with tasks({}/{}):".format(employee_name, len(done_tasks), len(tasks)))
+        print("Employee {} is done with tasks({}/{}):".format(
+            employee_name, len(done_tasks), len(tasks)))
         for task in done_tasks:
             print("\t{}".format(task.get('title')))
     else:
         # Display an error message if the request was not successful
-        print(f"Error: Unable to fetch data. Status code: {response.status_code}")
+        print(f"Error: Status code: {response.status_code}")
