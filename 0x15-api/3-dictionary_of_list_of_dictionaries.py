@@ -8,8 +8,8 @@ import sys
 
 
 if __name__ == "__main__":
-    url = 'https://jsonplaceholder.typicode.com/users'
-    response = requests.get(url)
+    json_url = 'https://jsonplaceholder.typicode.com/users'
+    response = requests.get(json_url)
     employees = response.json()
 
     data_dict = {}
@@ -17,10 +17,8 @@ if __name__ == "__main__":
     for employee in employees:
         USER_ID = employee.get('id')
         username = employee.get('username')
-        url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-                USER_ID)
-        url = url + '/todos/'
-        response = requests.get(url)
+        todos_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(USER_ID)
+        response = requests.get(todos_url)
         tasks = response.json()
         data_dict[USER_ID] = []
         for task in tasks:
@@ -29,5 +27,6 @@ if __name__ == "__main__":
                 "completed": task.get("completed"),
                 "username": username
             })
+
     with open('todo_all_employees.json', 'w') as f:
         json.dump(data_dict, f)
