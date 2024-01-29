@@ -8,8 +8,8 @@ import sys
 
 
 if __name__ == "__main__":
-    jsonplaceholder = 'https://jsonplaceholder.typicode.com/users'
-    response = requests.get(jsonplaceholder)
+    url = 'https://jsonplaceholder.typicode.com/users'
+    response = requests.get(url)
     employees = response.json()
 
     data_dict = {}
@@ -17,9 +17,9 @@ if __name__ == "__main__":
     for employee in employees:
         USER_ID = employee.get('id')
         username = employee.get('username')
-        jsonplaceholder = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
+        url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
                 USER_ID)
-        jsonplaceholder = jsonplaceholder + '/todos/'
+        url = url + '/todos/'
         response = requests.get(url)
         tasks = response.json()
         data_dict[USER_ID] = []
