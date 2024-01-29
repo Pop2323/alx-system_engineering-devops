@@ -17,7 +17,8 @@ if __name__ == "__main__":
     for employee in employees:
         USER_ID = employee.get('id')
         username = employee.get('username')
-        todos_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(USER_ID)
+        todos_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
+                USER_ID)
         response = requests.get(todos_url)
         tasks = response.json()
         data_dict[USER_ID] = []
