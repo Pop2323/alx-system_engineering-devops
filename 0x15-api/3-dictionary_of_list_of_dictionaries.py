@@ -17,17 +17,20 @@ if __name__ == "__main__":
     for employee in employees:
         USER_ID = employee.get('id')
         username = employee.get('username')
-        todos_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'.format(
-                USER_ID)
+
+        # Break the long URL into multiple lines
+        todos_url = ('https://jsonplaceholder.typicode.com/users/{}/'
+                     'todos').format(USER_ID)
+
         response = requests.get(todos_url)
         tasks = response.json()
         data_dict[USER_ID] = []
+
         for task in tasks:
             data_dict[USER_ID].append({
                 "task": task.get("title"),
                 "completed": task.get("completed"),
                 "username": username
             })
-
     with open('todo_all_employees.json', 'w') as f:
         json.dump(data_dict, f)
