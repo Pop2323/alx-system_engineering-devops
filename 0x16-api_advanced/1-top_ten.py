@@ -12,10 +12,12 @@ def top_ten(subreddit):
     headers = {'User-Agent': 'Mozilla/5.0'}
     params = {'limit': 10}
     url = 'https://www.reddit.com/r/{}/hot.json?limit=10'.format(subreddit)
-    response = requests.get(url, headers=headers, params=params,
-                            allow_redirects=False)
+
+    response = requests.get(url, headers=headers, allow_redirects=False,
+                            params=parameters)
     if response.status_code == 200:
         hot_posts = response.json().get('data').get('children')
+
         for post in hot_posts:
             print(post.get('data').get('title'))
     else:
