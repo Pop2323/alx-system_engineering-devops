@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-""" Function that queries the Reddit API """
+""" Function that queries the Reddit API"""
 import requests
 import sys
 
 
 def number_of_subscribers(subreddit):
-    """function that queries the Reddit API and prints
-        the titles of the first 10 hot posts
-        listed for a given subreddit."""
+    """function that queries the Reddit API"""
     headers = {'User-Agent': 'custom'}
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     response = requests.get(url, headers=headers, allow_redirects=False)
