@@ -2,18 +2,19 @@
 
 ## Issue Summary:
 
-Duration: February 15, 2023, 10:00 AM - 12:30 PM (UTC)
+Duration: February 15, 2023, 10:30 AM - 12:30 PM (UTC)
 Impact: Users experienced a 45-minute service interruption. Approximately 20% of our user base faced slow response times or complete unavailability during the incident.
 Root Cause: The outage was caused by a misconfiguration in the load balancer settings, leading to an excessive rate of connection failures.
-Timeline:
 
-10:00 AM: Issue detected through monitoring alerts indicating a spike in error rates.
-10:05 AM: Operations team investigated initial assumption of database server issues.
-10:20 AM: Misleading path: Focus shifted to backend services, with unnecessary debugging of database queries.
-10:40 AM: Escalation to Systems Engineering team as initial investigations yielded no resolution.
-11:00 AM: Root cause identified - misconfiguration in load balancer settings affecting connection handling.
-11:30 AM: Load balancer settings corrected, and affected services gradually recovered.
-12:30 PM: Service fully restored.
+## Timeline:
+
+### 10:30 AM: Issue detected through monitoring alerts indicating a spike in error rates.
+### 10:05 AM: Operations team investigated initial assumption of database server issues.
+### 10:20 AM: Misleading path: Focus shifted to backend services, with unnecessary debugging of database queries.
+### 10:30 AM: Escalation to Systems Engineering team as initial investigations yielded no resolution.
+### 11:10 AM: Root cause identified - misconfiguration in load balancer settings affecting connection handling.
+### 11:30 AM: Load balancer settings corrected, and affected services gradually recovered.
+### 12:30 PM: Service fully restored.
 
 ## Root Cause and Resolution:
 
