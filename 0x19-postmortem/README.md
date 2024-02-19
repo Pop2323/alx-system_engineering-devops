@@ -3,7 +3,7 @@
 ## Issue Summary:
 
 Duration: February 15, 2023, 10:30 AM - 12:30 PM (UTC)
-Impact: Users experienced a 45-minute service interruption. Approximately 20% of our user base faced slow response times or complete unavailability during the incident.
+Impact: Users experienced a 1 hour and 45-minute service interruption. Approximately 20% of our user base faced slow response times or complete unavailability during the incident.
 Root Cause: The outage was caused by a misconfiguration in the load balancer settings, leading to an excessive rate of connection failures.
 
 ## Timeline:
