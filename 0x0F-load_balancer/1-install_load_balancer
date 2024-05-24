@@ -1,31 +1,18 @@
 #!/usr/bin/env bash
+# Setup load balncer 
 
-
-# Update and upgrade packages
-sudo apt-get update
-sudo apt-get -y upgrade
-
-# Install HAProxy
+sudo apt-get -y update
 sudo apt-get -y install haproxy
+sudo chown  $USER:$USER /etc/haproxy/haproxy.cfg
 
-# Check if the HAProxy config file exists and back it up
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.original
-
-# Enable HAProxy to be started by init script
-sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
-
-# Append new configuration to HAProxy config
-sudo tee -a /etc/haproxy/haproxy.cfg <<EOF
-
-listen 418619-lb-01
+echo "
+frontend estebanweb
     bind *:80
     mode http
+    default_backend app
+backend app
     balance roundrobin
-    option httpclose
-    option forwardfor
-    server 418619-web-01 54.227.201.4:80 check
-    server 418619-web-02 34.207.121.32:80 check
-EOF
+    server 1542-web-01 34.73.222.49:80 check
+    server 1542-web-02 	54.82.121.70:80 check" >> /etc/haproxy/haproxy.cfg
 
-# Start HAProxy service
-sudo service haproxy start
+sudo service haproxy restart
