@@ -12,7 +12,7 @@ frontend estebanweb
     default_backend app
 backend app
     balance roundrobin
-    server 1542-web-01 34.73.222.49:80 check
-    server 1542-web-02 	54.82.121.70:80 check" >> /etc/haproxy/haproxy.cfg
+    server 418619-web-01 	54.237.5.178:80 check
+    server 418619-web-02 	100.25.146.254:80 check" >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
